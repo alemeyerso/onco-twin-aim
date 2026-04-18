@@ -342,13 +342,26 @@
             /* Gemelo Digital */
             .twin-wrap {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto auto;
+                grid-template-rows: auto;
                 padding: 1rem; gap: 1rem;
+                /* Deja que el contenido fluya — sin límite de altura */
+                overflow: visible;
             }
-            .inputs-panel { max-height: 55vh; overflow-y: auto; }
+            .inputs-panel {
+                max-height: none;   /* sin límite — todo visible */
+                overflow-y: visible;
+            }
+            .rec-panel { overflow: visible; }
             .result-badge { font-size: 1.8rem; }
-            .timeline-row { gap: 0; }
-            .tl-step { font-size: 0.6rem; padding: 0.5rem 0.1rem; }
+            .timeline-row { flex-wrap: wrap; }
+            .tl-step { font-size: 0.6rem; padding: 0.5rem 0.1rem; min-width: 18%; }
+
+            /* El panel de la tab activa debe hacer scroll completo */
+            .tab-panel.active {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                height: 100%;
+            }
 
             /* Árbol — solo scroll, aviso de rotar */
             #canvas-area { padding: 1rem; }
